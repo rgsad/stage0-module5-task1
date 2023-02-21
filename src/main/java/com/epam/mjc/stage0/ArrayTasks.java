@@ -142,8 +142,8 @@ public class ArrayTasks {
             }
         }
 
-        arr[0] = max;
-        arr[1] = min;
+        arr[0] = min;
+        arr[1] = max;
         return arr;
     }
 }
