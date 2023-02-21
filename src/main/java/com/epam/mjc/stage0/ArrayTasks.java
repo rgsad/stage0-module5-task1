@@ -119,31 +119,26 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-        int[] max = arr[0].length > arr[1].length ? arr[0] : arr[1];
-        int[] min = arr[0].length < arr[1].length ? arr[0] : arr[1];
-
-        for (int i = 0; i < max.length - 1; i++) {
-            for (int j = i+1; j < max.length; j++) {
-                if (max[j] < max[i]) {
-                    int temp = max[i];
-                    max[i] = max[j];
-                    max[j] = temp;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j].length < arr[i].length) {
+                    int[] temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
                 }
             }
         }
-
-        for (int i = 0; i < min.length - 1; i++) {
-            for (int j = i+1; j < min.length; j++) {
-                if (min[j] < min[i]) {
-                    int temp = min[i];
-                    min[i] = min[j];
-                    min[j] = temp;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length-1; j++) {
+                for (int k = j+1; k < arr[i].length; k++) {
+                    if (arr[i][j] > arr[i][k]) {
+                        int temp = arr[i][j];
+                        arr[i][j] = arr[i][k];
+                        arr[i][k] = temp;
+                    }
                 }
             }
         }
-
-        arr[0] = min;
-        arr[1] = max;
         return arr;
     }
 }
